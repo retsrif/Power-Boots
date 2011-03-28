@@ -1,10 +1,14 @@
 package retsrif.PowerBoots;
 
 import org.bukkit.Location;
+
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.inventory.ItemStack;
@@ -20,20 +24,16 @@ public class PBPlayerListener extends PlayerListener {
 		final Player player = event.getPlayer();
 		ItemStack boots = player.getInventory().getBoots();
 		
-		if(boots.getType() == Material.LEATHER_BOOTS) {
+		if(boots.getType() == Material.LEATHER_BOOTS && PowerBoots.leatherBoots == true) {
 			leatherBoot(player);
 		}
 		
-		if(boots.getType() == Material.IRON_BOOTS) {
+		if(boots.getType() == Material.IRON_BOOTS && PowerBoots.ironBoots == true) {
 			ironBoot(player);
 		}
 		
-		if(boots.getType() == Material.GOLD_BOOTS) {
+		if(boots.getType() == Material.GOLD_BOOTS && PowerBoots.goldBoots == true) {
 			goldBoot(player);
-		}
-		
-		if(boots.getType() == Material.DIAMOND_BOOTS) {
-			
 		}
 		
 	}
@@ -90,10 +90,6 @@ public class PBPlayerListener extends PlayerListener {
 		};
 		
 		plugin.getServer().getScheduler().scheduleSyncDelayedTask(plugin, checkLoc, 20L);
-	}
-	
-	public void diamondBoot(final Player player) {
-		
 	}
 	
 	public String playerLoc(Player player) {
